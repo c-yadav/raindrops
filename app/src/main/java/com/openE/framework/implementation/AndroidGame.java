@@ -42,7 +42,7 @@ public abstract class AndroidGame extends Activity implements Game {
         int frameBufferHeight = isPortrait ? 800: 480;
         Bitmap frameBuffer = Bitmap.createBitmap(frameBufferWidth,
                 frameBufferHeight, Config.RGB_565);
-        
+
         float scaleX = (float) frameBufferWidth
                 / getWindowManager().getDefaultDisplay().getWidth();
         float scaleY = (float) frameBufferHeight
@@ -56,15 +56,15 @@ public abstract class AndroidGame extends Activity implements Game {
         accelerometerHandler = new AccelerometerHandler(this);
         screen = getStartScreen();
         setContentView(renderView);
-        
+
         PowerManager powerManager = (PowerManager) getSystemService(Context.POWER_SERVICE);
-        wakeLock = powerManager.newWakeLock(PowerManager.FULL_WAKE_LOCK, "MyGame");
+        wakeLock = powerManager.newWakeLock(PowerManager.FULL_WAKE_LOCK, "com.openE.framework:AndroidGame");
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        wakeLock.acquire();
+        wakeLock.acquire(10*60*1000L /*10 minutes*/);
         screen.resume();
         renderView.resume();
     }
@@ -99,7 +99,7 @@ public abstract class AndroidGame extends Activity implements Game {
     public Audio getAudio() {
         return audio;
     }
-    
+
     public AccelerometerHandler getAccelerometerHandler() {
         return accelerometerHandler;
     }
@@ -115,7 +115,7 @@ public abstract class AndroidGame extends Activity implements Game {
         screen.update(0);
         this.screen = screen;
     }
-    
+
     public Screen getCurrentScreen() {
 
     	return screen;

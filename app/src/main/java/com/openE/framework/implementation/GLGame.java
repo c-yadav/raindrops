@@ -56,7 +56,7 @@ public abstract class GLGame extends Activity implements Game, Renderer {
         accelerometerHandler = new AccelerometerHandler(this);
 		PowerManager powerManager = (PowerManager) getSystemService(Context.POWER_SERVICE);
 		wakeLock = powerManager.newWakeLock(PowerManager.FULL_WAKE_LOCK,
-				"GLGame");
+				"com.openE.framework:GLGame");
 	}
 	
 	public void onResume() {
