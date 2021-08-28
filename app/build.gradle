@@ -6,7 +6,7 @@ android {
 
     defaultConfig {
         applicationId "com.openE.framework"
-        minSdkVersion 8
+        minSdkVersion 14
         targetSdkVersion 30
     }
 
@@ -19,5 +19,5 @@ android {
 }
 
 dependencies {
-    implementation 'com.android.support:support-v4:18.+'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
 }
