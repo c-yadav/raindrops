@@ -58,13 +58,13 @@ public abstract class AndroidGame extends Activity implements Game {
         setContentView(renderView);
         
         PowerManager powerManager = (PowerManager) getSystemService(Context.POWER_SERVICE);
-        wakeLock = powerManager.newWakeLock(PowerManager.FULL_WAKE_LOCK, "MyGame");
+        wakeLock = powerManager.newWakeLock(PowerManager.FULL_WAKE_LOCK, "com.openE.raindrops:wakeLockTag");
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        wakeLock.acquire();
+        wakeLock.acquire(10*60*1000L /*10 minutes*/);
         screen.resume();
         renderView.resume();
     }
